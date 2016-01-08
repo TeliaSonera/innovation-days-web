@@ -1,0 +1,27 @@
+---
+layout: default
+---
+    <section>
+        <div class="content full-width">
+            <ul id="breadcrumbs">
+                <li><a href="/">Innovation Days</a> > </li>
+                <li><a href="/blog/">Blog</a> > </li>
+                <li>{{ page.title }}</li>
+            </ul>
+        </div>
+    </section>
+    <section>
+      <div class="content full-width">
+        <div class="grid-8" id="post-content">
+          <div class="inner">
+            {{ content }}      
+          </div>
+        </div>
+        <div class="grid-4">
+          <div class="inner">
+            <h2>Les også</h2>
+            {% include bloglist.html %}
+          </div>  
+        </div>
+      </div>
+    </section>
