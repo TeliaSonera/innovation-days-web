@@ -1,0 +1,30 @@
+---
+title: Ideas
+layout: default
+---
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.0.0/dist/sheetrock.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
+<script type="text/javascript">
+var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1eO6wlb9q2d6Wd3-FKBAUU9D2WeWYw93EWSxsZMmadB8/edit#gid=634028051';
+</script>
+
+<ul id="statistics">
+<script id="hr-template" type="text/x-handlebars-template">
+    <li>
+        {% raw %}
+      <strong>{{cells.Navn}} {{cells.Allergier}}</strong>,
+      {{cells.Mailadresse}}
+        {% endraw %}
+    </li>
+  </script>
+</ul>
+
+<script type="text/javascript">
+var HRTemplate = Handlebars.compile($('#hr-template').html());
+$('#statistics').sheetrock({
+  url: mySpreadsheet,
+  query: "select B,C,D",
+  fetchSize: 5,
+  rowTemplate: HRTemplate
+});
+</script>

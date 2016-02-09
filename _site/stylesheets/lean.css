@@ -1,0 +1,101 @@
+.lc-container {
+  border: 1px solid #dbdbdb;
+  float: left;
+}
+
+.lc-container.vertical {
+  width: 20%
+}
+
+.lc-container.full-height>div {
+  height: 400px;
+}
+
+
+.lc-container.horizontal {
+  width: 50%;
+  height: 250px;
+}
+
+.lc-container textarea {
+  width: 100%!important;
+  border: 0;
+  resize: none;
+  height: 310px;
+  font-size: 13px
+}
+
+.horizontal textarea {
+  height: 180px;
+}
+
+.required-message, .error-message {
+  display: none;
+}
+
+.lc-container .bottom {
+  border-top: 1px solid #dbdbdb;
+}
+
+.ss-question-list {
+  max-width: 100%!important;
+}
+
+.ss-q-title {
+  font-weight: bold;
+  text-align: center;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.ss-q-help {
+  margin: 0 10px;
+  font-size: 11px;
+}
+
+.vertical .ss-q-help {
+  height: 50px;
+}
+
+.ss-q-short {
+  text-align: center;
+    width: 40%!important;
+    margin: 0 auto;
+    float: none;
+    position: relative;
+    display: block;
+    height: 40px
+}
+
+.ss-section-title {
+  text-align: center!important;
+  margin-top: 40px!important;
+}
+
+.ss-section-description {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#ss-submit {
+  width: 200px;
+  background: #990AE3;
+  border: 0;
+  color: #fff;
+  font-size: 17px;
+  height: 40px;
+  border-radius: 20px;
+  margin: 0 auto;
+  float: none;
+  display: block;
+  margin-top: 20px;
+}
+
+.ss-navigate {
+  float: left;
+  width: 100%;
+}
+
+#ss-submit:hover {
+  cursor: pointer;
+}

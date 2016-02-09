@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Innovation Days :: TeliaSonera</title>
-
+    <meta name="robots" content="noindex">
     <link rel="stylesheet" href="/stylesheets/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <script type="text/javascript" src="/javascripts/jquery-1.11.3.min.js"></script>
@@ -14,6 +14,15 @@
     
   </head>
   <body>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-73178120-1', 'auto');
+  ga('send', 'pageview');
+
+      </script>
       <section class="heading purple">
         <div class="content">
             <div class="grid-12">
@@ -26,38 +35,39 @@
         <div class="grid-12">
             <nav>
                 <a href="/">Home</a>
-                <a href="/participation.html">Participate</a>
-                <a href="/ideas.html">Ideas</a>
+                <a href="/participate">Participate</a>
+                <a href="/ideas">Ideas</a>
                 
             </nav>
         </div>
     </div>
 </section>
-      <section>
-            <div class="content full-width">
-            <div class="grid-12">
-                <div class="inner">
-                    <h1>Ideas</h1>
-    <p>
-        We hope to see many ideas for products, services, and other innovations, preferably within TS focus areas, being validated and turned into prototypes or clear concept descriptions at the event. </p>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.0.0/dist/sheetrock.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
+<script type="text/javascript">
+var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1eO6wlb9q2d6Wd3-FKBAUU9D2WeWYw93EWSxsZMmadB8/edit#gid=634028051';
+</script>
 
-    <h2>Criteria:</h2>
-    <p>The submitted ideas should:</p>
-    <ul>
-        <li>Be relevant to TeliaSonera, by supporting our main strategic areas</li>
-        <li>Answer a real need in the market or in our organization</li>
-        <li>Add value for our customers or our organization by improving customer experiences, improving our way of work or increasing revenue.</li>
-        <li>Be realistic in terms of the time it takes or the cost it demands to realize the idea.</li>
-    </ul>
-    <p>We urge you to submit your idea early so we can pick the right mentors for the event</p>
-                    <p style="text-align: center"><a class="button" href="/insert-idea.html">Insert idea</a></p>
-                
-                </div>
-                
-    </div>
-    </div>
+<ul id="statistics">
+<script id="hr-template" type="text/x-handlebars-template">
+    <li>
+        
+      <strong>{{cells.Navn}} {{cells.Allergier}}</strong>,
+      {{cells.Mailadresse}}
+        
+    </li>
+  </script>
+</ul>
 
-</section>
+<script type="text/javascript">
+var HRTemplate = Handlebars.compile($('#hr-template').html());
+$('#statistics').sheetrock({
+  url: mySpreadsheet,
+  query: "select B,C,D",
+  fetchSize: 5,
+  rowTemplate: HRTemplate
+});
+</script>
       <script type="text/javascript" src="/javascripts/main.js"></script>
   </body>
 </html>
