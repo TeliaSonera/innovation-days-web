@@ -1,8 +1,9 @@
 ---
 published: true
 layout: post
-title: Ideas
+title: Criteria for ideas
 date: 2016-01-04T00:00:00.000Z
+description: "We hope to see many ideas for products, services, and other innovations, preferably within TS focus areas, being validated and turned into prototypes or clear concept descriptions at the event."
 ---
 
 # Ideas

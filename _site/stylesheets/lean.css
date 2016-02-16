@@ -53,6 +53,10 @@
   font-size: 11px;
 }
 
+.ss-required-asterisk {
+    color: red;
+}
+
 .vertical .ss-q-help {
   height: 50px;
 }

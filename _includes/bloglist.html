@@ -1,5 +1,5 @@
-<ul class="posts">
+<div class="posts">
   {% for post in site.posts %}
-    <li><span>{{ post.date | date_to_string }}</span><br /><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+    <div class="post"><p class="date">{{ post.date | date_to_string }}</p><h3><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h3></div>
   {% endfor %}
-</ul>
+</dov>

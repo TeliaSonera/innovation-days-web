@@ -43,7 +43,6 @@
 
 .ss-q-title {
   font-weight: bold;
-  text-align: center;
   margin: 10px 0;
   font-size: 14px;
 }
@@ -62,23 +61,25 @@
 }
 
 .ss-q-short {
-  text-align: center;
-    width: 40%!important;
-    margin: 0 auto;
-    float: none;
-    position: relative;
-    display: block;
+    width: 70%!important;
     height: 40px
 }
 
-.ss-section-title {
-  text-align: center!important;
-  margin-top: 40px!important;
+textarea {
+  width: 100%!important;
 }
 
-.ss-section-description {
-  margin-bottom: 20px;
-  text-align: center;
+ul.ss-choices {
+  margin: 0;
+  padding: 0;
+}
+
+form, ol.ss-question-list {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  display: block;
+  float: none;
 }
 
 #ss-submit {
@@ -102,4 +103,25 @@
 
 #ss-submit:hover {
   cursor: pointer;
+}
+
+.ss-form-question {
+  width: 100%;
+  float: left;
+  padding-bottom: 20px
+}
+
+.other {
+  clear: both;
+}
+
+.ss-q-item-label {
+  text-transform: uppercase;
+}
+
+.ss-choice-item {
+  list-style: none;
+  float: left;
+  margin-right: 20px;
+  line-height: 40px;
 }

@@ -2,10 +2,23 @@
 layout: default
 title: Innovation days blog
 ---
-	<h1>{{ page.title }}</h1>
-	<ul class="posts">
+<section>
+    <div class="content full-width">
+        <div class="grid-12">
+            <div class="inner post-content">	
+            <h1 style="text-transform:uppercase">{{ page.title }}</h1>
+                <div class="posts">
 
-	  {% for post in site.posts %}
-	    <li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
-	  {% endfor %}
-	</ul>
+                  {% for post in site.posts %}
+                    <div class="post">
+                        <p class="date">{{ post.date | date_to_string }}</p>
+                        <h2><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h2>
+                        <p>{{ post.description }}</p>
+                        <p><a href="{{ post.url }}">Les mer</a></p>
+                    </div>
+                  {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -2,6 +2,7 @@
 layout: post
 title: "TeliaSonera strategic areas"
 date: 2015-12-30
+description: "We are sure you know TeliaSoneras 7 strategy points by heart. In case you need a reminder, here are the headlines"
 ---
 
 # TeliaSonera strategic areas
