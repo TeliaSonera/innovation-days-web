@@ -157,7 +157,7 @@ headsection: <link type="text/css" rel="stylesheet" href="/stylesheets/attend.cs
                                         <div class="ss-q-help ss-secondary-text" dir="auto"></div>
                                     </label>
 
-                                    <ul class="ss-choices" role="radiogroup" aria-label="What division in TeliaSonera do you belong to?  ">
+                                    <ul class="ss-choices vertical" role="radiogroup" aria-label="What division in TeliaSonera do you belong to?  ">
                                         <li class="ss-choice-item">
                                             <label><span class="ss-choice-item-control goog-inline-block"><input type="radio" name="entry.936439828" value="Technology" id="group_936439828_1" role="radio" class="ss-q-radio" aria-label="Technology" required="" aria-required="true"></span>
                                                 <span class="ss-choice-label">Technology</span>
@@ -250,7 +250,7 @@ headsection: <link type="text/css" rel="stylesheet" href="/stylesheets/attend.cs
                                         <div class="ss-q-help ss-secondary-text" dir="auto"></div>
                                     </label>
 
-                                    <ul class="ss-choices ss-choices-required" role="group" aria-label="Which of these skills do you bring to Innovation Days?  ">
+                                    <ul class="ss-choices ss-choices-required vertical" role="group" aria-label="Which of these skills do you bring to Innovation Days?  ">
                                         <li class="ss-choice-item">
                                             <label><span class="ss-choice-item-control goog-inline-block"><input type="checkbox" name="entry.17033299" value="Marketing" id="group_17033299_1" role="checkbox" class="ss-q-checkbox" aria-required="true"></span>
                                                 <span class="ss-choice-label">Marketing</span>
@@ -353,8 +353,8 @@ headsection: <link type="text/css" rel="stylesheet" href="/stylesheets/attend.cs
     </div>
 </section>
 <script type="text/javascript">
-    $("#ss-submit").click(function(e){
-        e.preventDefault();
+
+    $('#ss-form').submit(function(){
         var complete = true;
         $('input[aria-required="true"]').each(function(){
             if($(this).val().length < 1) {
@@ -369,9 +369,10 @@ headsection: <link type="text/css" rel="stylesheet" href="/stylesheets/attend.cs
             }
         })
         if(complete) {
-            $('#ss-form').submit();
+            return true;
         } else {
             window.scrollTo(0, 0);
+            return false;
         }
-    });
+    })
 </script>

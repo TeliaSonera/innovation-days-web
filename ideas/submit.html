@@ -7,7 +7,7 @@ headsection: <link type="text/css" rel="stylesheet" href="/stylesheets/lean.css"
     <div class="content full-width">
         <div class="grid-12">
             <div class="inner post-content">
-                <form action="https://docs.google.com/forms/d/1_wxLxcyfzFzhBR3A0A28MvtBMZ8RBAbRkeDuieh4udg/formResponse" method="POST" id="ss-form" target="_self" onsubmit="">
+                <form action="https://docs.google.com/forms/d/1_wxLxcyfzFzhBR3A0A28MvtBMZ8RBAbRkeDuieh4udg/formResponse" method="POST" id="ss-form" target="_self">
                     <ol role="list" class="ss-question-list" style="padding-left: 0">
                         <div class="intro-question ss-form-question errorbox-good" role="listitem">
                             <div dir="auto" class="ss-item ss-item-required ss-text">
@@ -216,8 +216,8 @@ headsection: <link type="text/css" rel="stylesheet" href="/stylesheets/lean.css"
     </div>
 </section>
 <script type="text/javascript">
-    $("#ss-submit").click(function(e){
-        e.preventDefault();
+
+    $('#ss-form').submit(function(){
         var complete = true;
         $('input[aria-required="true"]').each(function(){
             if($(this).val().length < 1) {
@@ -232,9 +232,10 @@ headsection: <link type="text/css" rel="stylesheet" href="/stylesheets/lean.css"
             }
         })
         if(complete) {
-            $('#ss-form').submit();
+            return true;
         } else {
             window.scrollTo(0, 0);
+            return false;
         }
-    });
+    })
 </script>
