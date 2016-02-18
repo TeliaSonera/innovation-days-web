@@ -37,10 +37,27 @@ function conditionalFields() {
     });
 }
 
+function burgerClick() {
+    if($('.burger').hasClass('open')) {
+        $('.burger').removeClass('open');
+        $('.nav .grid-12').slideUp();
+    } else {
+        $('.burger').addClass('open');
+        $('.nav .grid-12').slideDown();        
+    }
+}
+
 $(document).ready(function(){
     resizeInner();
     conditionalFields();
     $(window).resize(function(){
         resizeInner();
     });
+    $('.burger').click(function(){
+        burgerClick();
+    });
+    $(window).resize(function(){
+        $('.nav .grid-12').css('display', '');
+        $('.burger').removeClass('open');
+    })
 });
