@@ -10,9 +10,13 @@ body {
   color: black;
 }
 
-h1, h2, h2 a, nav a {
+h1, nav a {
   color: #990ae3;
   font-weight: bold
+}
+
+h2, h2 a {
+    font-weight: bold;
 }
 
 .heading. footer {
@@ -98,6 +102,11 @@ nav a:hover {
 .button:hover {
   text-decoration: none;
   background: #cc00ff;
+}
+
+.button.inactive, button.inactive:hover {
+    background: #ccc;
+    cursor: default;
 }
 
 .centered p {
@@ -510,3 +519,27 @@ textarea {
   }
 }
 
+.question, .answer {
+  padding-left: 55px;
+}
+
+.answer {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.question::before {
+  content: "Q:";
+}
+.answer::before {
+  content: "A:";
+}
+
+.answer::before, .question::before {
+  
+  color: #990AE3;
+  font-size: 2.1rem;
+  position: absolute;
+  margin: -5px -55px;
+  font-weight: bold;
+}
