@@ -509,6 +509,11 @@ textarea {
   header ul {
     display:none;
   }
+
+  .button {
+     display: inline-block;
+     margin: 14px;
+  }
 }
 
 @media print {
