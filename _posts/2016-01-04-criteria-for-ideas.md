@@ -3,15 +3,15 @@ published: true
 layout: post
 title: Criteria for ideas
 date: 2016-01-04T00:00:00.000Z
-description: "We hope to see many ideas for products, services, and other innovations, preferably within TS focus areas, being validated and turned into prototypes or clear concept descriptions at the event."
+description: "We hope to see many ideas for products, services, and other innovations, preferably within Telia Norge focus areas, being validated and turned into prototypes or clear concept descriptions at the event."
 ---
 
 # Ideas
-We hope to see many ideas for products, services, and other innovations, preferably within TS focus areas, being validated and turned into prototypes or clear concept descriptions at the event. 
+We hope to see many ideas for products, services, and other innovations, preferably within Telia Norge focus areas, being validated and turned into prototypes or clear concept descriptions at the event. 
 
 ## Criteria:
 The submitted ideas should:
-- Be relevant to TeliaSonera, by supporting our main strategic areas
+- Be relevant to Telia Norge, by supporting our main strategic areas
 - Fulfill/Answer a real need in the market or in our organization
 - Add value for our customers or our organization by improving customer experiences, improving our way of work or increasing revenue.
 - Be realistic in terms of the time it takes or the cost it demands to realize the idea.

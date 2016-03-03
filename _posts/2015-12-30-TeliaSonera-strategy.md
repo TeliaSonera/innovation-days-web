@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "TeliaSonera strategic areas"
+title: "Telia Norge strategic areas"
 date: 2015-12-30
-description: "We are sure you know TeliaSoneras 7 strategy points by heart. In case you need a reminder, here are the headlines"
+description: "We are sure you know Telia Norge 7 strategy points by heart. In case you need a reminder, here are the headlines"
 ---
 
-# TeliaSonera strategic areas
-We are sure you know TeliaSoneras 7 strategy points by heart. In case you need a reminder, here are the headlines:
+# Telia Norge strategic areas
+We are sure you know Telia Norge 7 strategy points by heart. In case you need a reminder, here are the headlines:
 
 1. Unmatched customer experiences
 2. Explore opportunities close to core
