@@ -50,32 +50,96 @@
         </div>
     </div>
 </section>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.0.0/dist/sheetrock.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
-<script type="text/javascript">
-var mySpreadsheet = 'https://docs.google.com/spreadsheets/d/1eO6wlb9q2d6Wd3-FKBAUU9D2WeWYw93EWSxsZMmadB8/edit#gid=634028051';
+      <script type="text/javascript">
+function replacer(a, b, c) {
+    $('.problem p').each(function(){
+        var str = $(this).text();
+        console.log(str);
+        str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+        console.log(str);
+        $(this).html(str)
+    });
+    $('.solution p').each(function(){
+        var str = $(this).text();
+        console.log(str);
+        str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+        console.log(str);
+        $(this).html(str)
+    })
+}
 </script>
 
-<ul id="statistics">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.0.0/dist/sheetrock.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
+<script type="text/javascript">
+    var mySpreadsheet1 = 'https://docs.google.com/spreadsheets/d/15JbOxxbaOHTvPr0PtuHGGU0CkwQKsqrLrw1B6yQ4TkY/edit#gid=152132890';
+    var mySpreadsheet2 = 'https://docs.google.com/spreadsheets/d/1kXu0xOMJBdlnCa359eBIpADvRa_7UfJCBJQCaPigauQ/edit#gid=1611504417';
+</script>
+<section>
+ <div class="content full-width">
+            <div class="grid-12">
+                <div class="inner post-content">
+
+    <div id="canvasideas">
 <script id="hr-template" type="text/x-handlebars-template">
-    <li>
+    <div class="idea">
         
-      <strong>{{cells.Navn}} {{cells.Allergier}}</strong>,
-      {{cells.Mailadresse}}
+        <div class="submitter"><p><strong>SUBMITTED BY: </strong>{{cells.SUBMITTER}}</p></div>
+        <div class="idea-name"><h2>{{cells.NAME}}</h2></div>
+        <div class="problem"><H3>PROBLEM</H3><p>{{cells.PROBLEM}}</p></div><div class="solution"><H3>SOLUTION</H3>
+        <p>{{cells.SOLUTION}}</p></div>
         
-    </li>
+    </div>
   </script>
-</ul>
+    </div>
+<div id="ideas">
+<script id="hr-template" type="text/x-handlebars-template">
+    <div class="idea">
+        
+        <div class="submitter"><p><strong>SUBMITTED BY: </strong>{{cells.SUBMITTER}}</p></div>
+        <div class="idea-name"><h2>{{cells.NAME}}</h2></div>
+        <div class="problem"><H3>PROBLEM</H3><p>{{cells.PROBLEM}}</p></div><div class="solution"><H3>SOLUTION</H3>
+        <p>{{cells.SOLUTION}}</p></div>
+        
+    </div>
+  </script>
+    </div>
+
+                </div></div></div></section>
 
 <script type="text/javascript">
 var HRTemplate = Handlebars.compile($('#hr-template').html());
-$('#statistics').sheetrock({
-  url: mySpreadsheet,
-  query: "select B,C,D",
-  fetchSize: 5,
+$('#canvasideas').sheetrock({
+  url: mySpreadsheet1,
+  query: "select B,D,E,G",
+  fetchSize: 100,
   rowTemplate: HRTemplate
 });
+$('#ideas').sheetrock({
+  url: mySpreadsheet2,
+  query: "select B,D,E,F",
+  fetchSize: 100,
+  rowTemplate: HRTemplate,
+    callback: function replacer(a, b, c) {
+    $('.problem p').each(function(){
+        var str = $(this).text();
+        console.log(str);
+        str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+        console.log(str);
+        $(this).html(str)
+    });
+    $('.solution p').each(function(){
+        var str = $(this).text();
+        console.log(str);
+        str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+        console.log(str);
+        $(this).html(str)
+    })
+}
+});
+
 </script>
+
       <section class="footer">
     <div class="content full-width">
         <div class="grid-4">
