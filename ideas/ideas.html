@@ -20,7 +20,6 @@ function replacer(a, b, c) {
     })
 }
 </script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.0.0/dist/sheetrock.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
 <script type="text/javascript">
@@ -75,17 +74,15 @@ $('#ideas').sheetrock({
     callback: function replacer(a, b, c) {
     $('.problem p').each(function(){
         var str = $(this).text();
-        console.log(str);
         str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-        console.log(str);
         $(this).html(str)
+        $(this).linkify();
     });
     $('.solution p').each(function(){
         var str = $(this).text();
-        console.log(str);
         str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-        console.log(str);
         $(this).html(str)
+        $(this).linkify();
     })
 }
 });
