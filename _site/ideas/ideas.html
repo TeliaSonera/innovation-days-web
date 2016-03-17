@@ -161,7 +161,7 @@ function replacer(a, b, c) {
                             });
                             $('.like').each(function(){
                                 var id = $(this).attr('id');
-                                if (document.cookie.indexOf(id + "c=true") > -1) {$(this).addClass('loveit')}
+                                if (document.cookie.indexOf(id + "love=true") > -1) {$(this).addClass('loveit')}
                                 var likes = ratings[$(this).attr('id')];
                                 $(this).find('span').text(likes);
                             });
@@ -177,7 +177,7 @@ function replacer(a, b, c) {
                                     var a=d.getTime()+(28*24*60*60*1000);
                                     d.setTime(d.getTime()+(28*24*60*60*1000));
                                     var expires = "expires="+d.toGMTString();
-                                    document.cookie = id + "c=false; domain=" + document.location.host + "; path=/; " + expires;
+                                    document.cookie = id + "love=false; domain=" + document.location.host + "; path=/; " + expires;
                                 } else {
                                     var id = $(this).attr('id');
                                     $('#entry_387011848').val(id);
@@ -190,7 +190,7 @@ function replacer(a, b, c) {
                                     d.setTime(d.getTime()+(28*24*60*60*1000));
                                     var expires = "expires="+d.toGMTString();
                                     console.log(document.location.host);
-                                    document.cookie = id + "c=true; domain=" + document.location.host + "; path=/; " + expires;
+                                    document.cookie = id + "love=true; domain=" + document.location.host + "; path=/; " + expires;
                                 }
                             })
                         }
