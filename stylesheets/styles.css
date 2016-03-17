@@ -567,3 +567,91 @@ textarea {
   margin: -5px -55px;
   font-weight: bold;
 }
+
+.heart {
+    position: relative;
+    width: 30px;
+    height: 40px;
+    left: 24px;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.heart:before,
+.heart:after {
+    position: absolute;
+    content: "";
+    left: 16px;
+    top: 0;
+    width: 16px;
+    height: 25px;
+    background: #222;
+    -moz-border-radius: 15px 15px 0 0;
+    border-radius: 15px 15px 0 0;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+    -moz-transform-origin: 0 100%;
+    -ms-transform-origin: 0 100%;
+    -o-transform-origin: 0 100%;
+    transform-origin: 0 100%;
+        -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+.heart:after {
+    left: 0;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+}
+
+.like:hover {
+    cursor: pointer;
+}
+
+.like:hover .heart, .like.loveit .heart {
+    left: 20px
+}
+
+.like:hover .heart:before, .like.loveit .heart:before {
+    left: 20px
+}
+
+.like:hover .heart:before, .like:hover .heart:after, .like.loveit .heart:before, .like.loveit .heart:after {
+    width: 20px;
+    height: 31px;
+    background: #ff2364;
+    border-radius: 20px 20px 0 0;
+}
+
+.like.loveit .heart:before, .like.loveit .heart:after {
+    background: #ff3264;
+}
+
+.like {
+  float: left;
+  text-align: center;
+  width: 80px;
+  padding-top: 10px;
+  height: 100%;
+}
+
+.like p {
+  font-size: 12px;
+  margin-bottom: 0
+}
+
+.counter {
+  font-size: 30px;
+  line-height: 1.2;
+  font-weight: bold
+}

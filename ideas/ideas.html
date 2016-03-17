@@ -25,66 +25,178 @@ function replacer(a, b, c) {
 <script type="text/javascript">
     var mySpreadsheet1 = 'https://docs.google.com/spreadsheets/d/15JbOxxbaOHTvPr0PtuHGGU0CkwQKsqrLrw1B6yQ4TkY/edit#gid=152132890';
     var mySpreadsheet2 = 'https://docs.google.com/spreadsheets/d/1kXu0xOMJBdlnCa359eBIpADvRa_7UfJCBJQCaPigauQ/edit#gid=1611504417';
+    var ratings = {};
 </script>
 <section>
- <div class="content full-width">
-            <div class="grid-12">
-                <div class="inner post-content">
-
-    <div id="canvasideas">
-<script id="hr-template" type="text/x-handlebars-template">
-    <div class="idea">
-        {% raw %}
-        <div class="submitter"><p><strong>SUBMITTED BY: </strong>{{cells.SUBMITTER}}</p></div>
-        <div class="idea-name"><h2>{{cells.NAME}}</h2></div>
-        <div class="problem"><H3>PROBLEM</H3><p>{{cells.PROBLEM}}</p></div><div class="solution"><H3>SOLUTION</H3>
-        <p>{{cells.SOLUTION}}</p></div>
-        {% endraw %}
+    <div class="content full-width">
+        <div class="grid-12">
+            <div class="inner post-content">
+                <div id="canvasideas">
+                    <script id="hr-template1" type="text/x-handlebars-template">
+                    {% raw %}
+                        <div class="idea">
+                            <div class="like" id="a{{num}}"><div class="heart"></div><p>LOVE IT!</p><p></p><span class="counter"></span></p></div>
+                            <div class="submitter"><p><strong>SUBMITTED BY: </strong>{{cells.SUBMITTER}}</p></div>
+                            <div class="idea-name"><h2>{{cells.NAME}}</h2></div>
+                            <div class="problem"><H3>PROBLEM</H3><p>{{cells.PROBLEM}}</p></div>
+                            <div class="solution"><H3>SOLUTION</H3><p>{{cells.SOLUTION}}</p></div>
+                            
+                        </div>
+                    {% endraw %}
+                    </script>
+                </div>
+                <div id="ideas">
+                    <script id="hr-template2" type="text/x-handlebars-template">
+                    {% raw %}
+                        <div class="idea">
+                            <div class="like" id="b{{num}}"><div class="heart"></div><p>LOVE IT!</p><p></p><span class="counter"></span></p></div>
+                            <div class="submitter"><p><strong>SUBMITTED BY: </strong>{{cells.SUBMITTER}}</p></div>
+                            <div class="idea-name"><h2>{{cells.NAME}}</h2></div>
+                            <div class="problem"><H3>PROBLEM</H3><p>{{cells.PROBLEM}}</p></div>
+                            <div class="solution"><H3>SOLUTION</H3><p>{{cells.SOLUTION}}</p></div>
+                        </div>
+                    {% endraw %}
+                    </script>
+                </div>
+                <div id="dummytemplate" style="display:none">
+                    <script id="hr-template3" type="text/x-handlebars-template">
+                    {% raw %}
+                    {% endraw %}
+                    </script>
+                </div>
+            </div>
+        </div>
     </div>
-  </script>
-    </div>
-<div id="ideas">
-<script id="hr-template" type="text/x-handlebars-template">
-    <div class="idea">
-        {% raw %}
-        <div class="submitter"><p><strong>SUBMITTED BY: </strong>{{cells.SUBMITTER}}</p></div>
-        <div class="idea-name"><h2>{{cells.NAME}}</h2></div>
-        <div class="problem"><H3>PROBLEM</H3><p>{{cells.PROBLEM}}</p></div><div class="solution"><H3>SOLUTION</H3>
-        <p>{{cells.SOLUTION}}</p></div>
-        {% endraw %}
-    </div>
-  </script>
-    </div>
-
-                </div></div></div></section>
+</section>
 
 <script type="text/javascript">
-var HRTemplate = Handlebars.compile($('#hr-template').html());
-$('#canvasideas').sheetrock({
-  url: mySpreadsheet1,
-  query: "select B,D,E,G",
-  fetchSize: 100,
-  rowTemplate: HRTemplate
-});
-$('#ideas').sheetrock({
-  url: mySpreadsheet2,
-  query: "select B,D,E,F",
-  fetchSize: 100,
-  rowTemplate: HRTemplate,
-    callback: function replacer(a, b, c) {
-    $('.problem p').each(function(){
-        var str = $(this).text();
-        str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-        $(this).html(str)
-        $(this).linkify();
+    var HRTemplate1 = Handlebars.compile($('#hr-template1').html());
+    var HRTemplate2 = Handlebars.compile($('#hr-template2').html());
+    var HRTemplate3 = Handlebars.compile($('#hr-template2').html());
+    $('#dummytemplate').sheetrock({
+        url: "https://docs.google.com/spreadsheets/d/1GXh1FVbgoxRYsUXaiqrwfxvJMhYooJB6WXM-7T3nZ6w/edit#gid=0",
+        query: "select G",
+        fetchSize: 1,
+        callback: function (a, b, c) {        
+            var ratingstring = c.rows[1].cells.STRING;
+            var splitted = ratingstring.split(',');
+            ratings = {splitted};
+            for (var i = 0; i < 60; i++) {
+                var pair = ratings.splitted[i].split(':');
+                ratings[pair[0]] = pair[1]
+            }
+            $('#canvasideas').sheetrock({
+                url: mySpreadsheet1,
+                query: "select B,D,E,G",
+                fetchSize: 30,
+                rowTemplate: HRTemplate1,
+                callback: function() {
+                    $('#ideas').sheetrock({
+                      url: mySpreadsheet2,
+                      query: "select B,D,E,F",
+                      fetchSize: 30,
+                      rowTemplate: HRTemplate2,
+                        callback: function replacer(a, b, c) {
+                            $('.problem p').each(function(){
+                                var str = $(this).text();
+                                str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+                                $(this).html(str)
+                                $(this).linkify();
+                            });
+                            $('.solution p').each(function(){
+                                var str = $(this).text();
+                                str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
+                                $(this).html(str)
+                                $(this).linkify();
+                            });
+                            $('.like').each(function(){
+                                var id = $(this).attr('id');
+                                if (document.cookie.indexOf(id + "c=true") > -1) {$(this).addClass('loveit')}
+                                var likes = ratings[$(this).attr('id')];
+                                $(this).find('span').text(likes);
+                            });
+                            $('.like').click(function(){
+                                if ($(this).hasClass('loveit')) {
+                                    var id = $(this).attr('id');
+                                    $('#entry_748787593').val(id);
+                                    $('#ss-submit2').click();
+                                    var a = parseInt($(this).find('span').text()) - 1;
+                                    $(this).find('span').text(a);  
+                                    $(this).removeClass('loveit');
+                                    var d = new Date();
+                                    var a=d.getTime()+(28*24*60*60*1000);
+                                    d.setTime(d.getTime()+(28*24*60*60*1000));
+                                    var expires = "expires="+d.toGMTString();
+                                    document.cookie = id + "c=false; domain=" + document.location.host + "; path=/; " + expires;
+                                } else {
+                                    var id = $(this).attr('id');
+                                    $('#entry_387011848').val(id);
+                                    $('#ss-submit').click();
+                                    var a = parseInt($(this).find('span').text()) + 1;
+                                    $(this).find('span').text(a); 
+                                    $(this).addClass('loveit');
+                                    var d = new Date();
+                                    var a=d.getTime()+(28*24*60*60*1000);
+                                    d.setTime(d.getTime()+(28*24*60*60*1000));
+                                    var expires = "expires="+d.toGMTString();
+                                    console.log(document.location.host);
+                                    document.cookie = id + "c=true; domain=" + document.location.host + "; path=/; " + expires;
+                                }
+                            })
+                        }
+                    });
+            }
+        });
+    }
     });
-    $('.solution p').each(function(){
-        var str = $(this).text();
-        str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-        $(this).html(str)
-        $(this).linkify();
-    })
-}
-});
+    
 
 </script>
+<iframe id="submitrating" name="submitrating" style="display:none"></iframe>
+<form style="display:none;" action="https://docs.google.com/forms/d/1wpkHVPcsoV7fp1FEEUWbrGx-h8E29RRUEKw8e6LDL0o/formResponse" method="POST" id="ss-form" target="submitrating" onsubmit=""><ol role="list" class="ss-question-list" style="padding-left: 0">
+<div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item  ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_387011848"><div class="ss-q-title">RankId
+</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+<input type="text" name="entry.387011848" value="" class="ss-q-short" id="entry_387011848" dir="auto" aria-label="RankId  " title="">
+<div class="error-message" id="1154636922_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div>
+<input type="hidden" name="draftResponse" value="[,,&quot;4632283650744526884&quot;]
+">
+<input type="hidden" name="pageHistory" value="0">
+
+<input type="hidden" name="fvv" value="0">
+
+
+<input type="hidden" name="fbzx" value="4632283650744526884">
+
+<div class="ss-item ss-navigate"><table id="navigation-table"><tbody><tr><td class="ss-form-entry goog-inline-block" id="navigation-buttons" dir="ltr">
+<input type="submit" name="submit" value="Submit" id="ss-submit" class="jfk-button jfk-button-action ">
+<div class="ss-password-warning ss-secondary-text">Never submit passwords through Google Forms.</div></td>
+</tr></tbody></table></div></ol></form>
+<form style="display:none" action="https://docs.google.com/forms/d/19vxcY9YZEUckeINfLoE86fM6DauTr2HLtUeA_TfOd14/formResponse" method="POST" id="ss-form2" target="submitrating" onsubmit=""><ol role="list" class="ss-question-list" style="padding-left: 0">
+<div class="ss-form-question errorbox-good" role="listitem">
+<div dir="auto" class="ss-item  ss-text"><div class="ss-form-entry">
+<label class="ss-q-item-label" for="entry_748787593"><div class="ss-q-title">RateId
+</div>
+<div class="ss-q-help ss-secondary-text" dir="auto"></div></label>
+<input type="text" name="entry.748787593" value="" class="ss-q-short" id="entry_748787593" dir="auto" aria-label="RateId  " title="">
+<div class="error-message" id="372378259_errorMessage"></div>
+<div class="required-message">This is a required question</div>
+</div></div></div>
+<input type="hidden" name="draftResponse" value="[,,&quot;6278516065444607641&quot;]
+">
+<input type="hidden" name="pageHistory" value="0">
+
+<input type="hidden" name="fvv" value="0">
+
+
+<input type="hidden" name="fbzx" value="6278516065444607641">
+
+<div class="ss-item ss-navigate"><table id="navigation-table"><tbody><tr><td class="ss-form-entry goog-inline-block" id="navigation-buttons" dir="ltr">
+<input type="submit" name="submit" value="Submit" id="ss-submit2" class="jfk-button jfk-button-action ">
+<div class="ss-password-warning ss-secondary-text">Never submit passwords through Google Forms.</div></td>
+</tr></tbody></table></div></ol></form>
+
