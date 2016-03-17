@@ -518,6 +518,12 @@ textarea {
     .heading {
       display: none;
     }
+      .like {
+    float: right!important
+  }
+  .submitter, .idea-name{
+    padding-right: 100px;
+  }
 }
 
 @media print, screen and (max-width: 480px) {
@@ -533,6 +539,7 @@ textarea {
      display: inline-block;
      margin: 14px;
   }
+
 }
 
 @media print {
@@ -560,7 +567,6 @@ textarea {
 }
 
 .answer::before, .question::before {
-  
   color: #990AE3;
   font-size: 2.1rem;
   position: absolute;
