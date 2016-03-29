@@ -15,7 +15,7 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    
+    <meta property="og:image" content="/assets/images/logo-horizontal.png" />
   </head>
   <body>
     <script>
@@ -52,25 +52,7 @@
         </div>
     </div>
 </section>
-      <script type="text/javascript">
-function replacer(a, b, c) {
-    $('.problem p').each(function(){
-        var str = $(this).text();
-        console.log(str);
-        str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-        console.log(str);
-        $(this).html(str)
-    });
-    $('.solution p').each(function(){
-        var str = $(this).text();
-        console.log(str);
-        str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-        console.log(str);
-        $(this).html(str)
-    })
-}
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.0.0/dist/sheetrock.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sheetrock/1.0.0/dist/sheetrock.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.1.2/handlebars.min.js"></script>
 <script type="text/javascript">
     var mySpreadsheet1 = 'https://docs.google.com/spreadsheets/d/15JbOxxbaOHTvPr0PtuHGGU0CkwQKsqrLrw1B6yQ4TkY/edit#gid=152132890';
@@ -81,6 +63,20 @@ function replacer(a, b, c) {
     <div class="content full-width">
         <div class="grid-12">
             <div class="inner post-content">
+                
+                <div id="ideas" style="display:none;">
+                    <script id="hr-template2" type="text/x-handlebars-template">
+                    
+                        <div class="idea">
+                            <div class="like" id="b{{num}}"><div class="heart"></div><p>LOVE IT!</p><p></p><span class="counter"></span></p></div>
+                            <div class="submitter"><p><strong>SUBMITTED BY: </strong>{{cells.SUBMITTER}}</p></div>
+                            <div class="idea-name"><h2>{{cells.NAME}}</h2></div>
+                            <div class="problem"><H3>PROBLEM</H3><p>{{cells.PROBLEM}}</p></div>
+                            <div class="solution"><H3>SOLUTION</H3><p>{{cells.SOLUTION}}</p></div>
+                        </div>
+                    
+                    </script>
+                </div>
                 <div id="canvasideas">
                     <script id="hr-template1" type="text/x-handlebars-template">
                     
@@ -91,19 +87,6 @@ function replacer(a, b, c) {
                             <div class="problem"><H3>PROBLEM</H3><p>{{cells.PROBLEM}}</p></div>
                             <div class="solution"><H3>SOLUTION</H3><p>{{cells.SOLUTION}}</p></div>
                             
-                        </div>
-                    
-                    </script>
-                </div>
-                <div id="ideas">
-                    <script id="hr-template2" type="text/x-handlebars-template">
-                    
-                        <div class="idea">
-                            <div class="like" id="b{{num}}"><div class="heart"></div><p>LOVE IT!</p><p></p><span class="counter"></span></p></div>
-                            <div class="submitter"><p><strong>SUBMITTED BY: </strong>{{cells.SUBMITTER}}</p></div>
-                            <div class="idea-name"><h2>{{cells.NAME}}</h2></div>
-                            <div class="problem"><H3>PROBLEM</H3><p>{{cells.PROBLEM}}</p></div>
-                            <div class="solution"><H3>SOLUTION</H3><p>{{cells.SOLUTION}}</p></div>
                         </div>
                     
                     </script>
@@ -119,89 +102,7 @@ function replacer(a, b, c) {
     </div>
 </section>
 
-<script type="text/javascript">
-    var HRTemplate1 = Handlebars.compile($('#hr-template1').html());
-    var HRTemplate2 = Handlebars.compile($('#hr-template2').html());
-    var HRTemplate3 = Handlebars.compile($('#hr-template2').html());
-    $('#dummytemplate').sheetrock({
-        url: "https://docs.google.com/spreadsheets/d/1GXh1FVbgoxRYsUXaiqrwfxvJMhYooJB6WXM-7T3nZ6w/edit#gid=0",
-        query: "select G",
-        fetchSize: 1,
-        callback: function (a, b, c) {        
-            var ratingstring = c.rows[1].cells.STRING;
-            var splitted = ratingstring.split(',');
-            ratings = {splitted : splitted};
-            for (var i = 0; i < 60; i++) {
-                var pair = ratings.splitted[i].split(':');
-                ratings[pair[0]] = pair[1]
-            }
-            $('#canvasideas').sheetrock({
-                url: mySpreadsheet1,
-                query: "select B,D,E,G",
-                fetchSize: 30,
-                rowTemplate: HRTemplate1,
-                callback: function() {
-                    $('#ideas').sheetrock({
-                      url: mySpreadsheet2,
-                      query: "select B,D,E,F",
-                      fetchSize: 30,
-                      rowTemplate: HRTemplate2,
-                        callback: function replacer(a, b, c) {
-                            $('.problem p').each(function(){
-                                var str = $(this).text();
-                                str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-                                $(this).html(str)
-                                $(this).linkify();
-                            });
-                            $('.solution p').each(function(){
-                                var str = $(this).text();
-                                str = str.replace(/(?:\r\n|\r|\n)/g, '<br />');
-                                $(this).html(str)
-                                $(this).linkify();
-                            });
-                            $('.like').each(function(){
-                                var id = $(this).attr('id');
-                                if (document.cookie.indexOf(id + "love=true") > -1) {$(this).addClass('loveit')}
-                                var likes = ratings[$(this).attr('id')];
-                                $(this).find('span').text(likes);
-                            });
-                            $('.like').click(function(){
-                                if ($(this).hasClass('loveit')) {
-                                    var id = $(this).attr('id');
-                                    $('#entry_748787593').val(id);
-                                    $('#ss-submit2').click();
-                                    var a = parseInt($(this).find('span').text()) - 1;
-                                    $(this).find('span').text(a);  
-                                    $(this).removeClass('loveit');
-                                    var d = new Date();
-                                    var a=d.getTime()+(28*24*60*60*1000);
-                                    d.setTime(d.getTime()+(28*24*60*60*1000));
-                                    var expires = "expires="+d.toGMTString();
-                                    document.cookie = id + "love=false; domain=" + document.location.host + "; path=/; " + expires;
-                                } else {
-                                    var id = $(this).attr('id');
-                                    $('#entry_387011848').val(id);
-                                    $('#ss-submit').click();
-                                    var a = parseInt($(this).find('span').text()) + 1;
-                                    $(this).find('span').text(a); 
-                                    $(this).addClass('loveit');
-                                    var d = new Date();
-                                    var a=d.getTime()+(28*24*60*60*1000);
-                                    d.setTime(d.getTime()+(28*24*60*60*1000));
-                                    var expires = "expires="+d.toGMTString();
-                                    console.log(document.location.host);
-                                    document.cookie = id + "love=true; domain=" + document.location.host + "; path=/; " + expires;
-                                }
-                            })
-                        }
-                    });
-            }
-        });
-    }
-    });
-    
-
-</script>
+<script src="/javascripts/ideas.js" type="text/javascript"></script>
 <iframe id="submitrating" name="submitrating" style="display:none"></iframe>
 <form style="display:none;" action="https://docs.google.com/forms/d/1wpkHVPcsoV7fp1FEEUWbrGx-h8E29RRUEKw8e6LDL0o/formResponse" method="POST" id="ss-form" target="submitrating" onsubmit=""><ol role="list" class="ss-question-list" style="padding-left: 0">
 <div class="ss-form-question errorbox-good" role="listitem">
