@@ -2,7 +2,7 @@
 published: true
 layout: post
 title: What is a Lean Canvas?
-date: 2016-02-08T00:00:00.000Z
+date: 2016-02-18T00:00:00.000Z
 description: "Lean guru Ash Maurya explains Lean Canvas in this perfect video"
 ---
 
