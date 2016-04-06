@@ -661,3 +661,28 @@ textarea {
   line-height: 1.2;
   font-weight: bold
 }
+
+
+.toggler {
+  background: url('/assets/images/arrow-down.png') center bottom no-repeat;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 14px;
+  cursor: pointer;
+  clear: both
+}
+
+.toggler.active {
+    background: url('/assets/images/arrow-up.png') center bottom no-repeat;
+}
+
+.toggler:before {
+  content:"Les mer";
+  width: 100%;
+  text-align:center;
+  display:block;
+}
+
+.toggler.active:before {
+  content:"Lukk";
+}

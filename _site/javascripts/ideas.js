@@ -54,6 +54,11 @@ function whenComplete() {
     ul = $('#ideas'); // your parent ul element
     ul.children().each(function(i,div){ul.prepend(div)});
     $('#ideas').show();
+    $('.toggler').click(function(){
+        $(this).toggleClass('active');
+        $(this).parent().find('.problem').toggle();
+        $(this).parent().find('.solution').toggle();
+    });
 }
 
 $('#dummytemplate').sheetrock({
@@ -94,3 +99,4 @@ $('#ideas').sheetrock({
         if (loadComplete > 2) {whenComplete()}
     }
 });
+
