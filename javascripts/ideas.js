@@ -51,6 +51,7 @@ function whenComplete() {
             }
         });
     $('#b10').parent().remove();
+    $('#b24').parent().remove();
     ul = $('#ideas'); // your parent ul element
     ul.children().each(function(i,div){ul.prepend(div)});
     $('#ideas').show();
