@@ -70,7 +70,7 @@ $('#dummytemplate').sheetrock({
         var ratingstring = c.rows[1].cells.STRING;
         var splitted = ratingstring.split(',');
         ratings = {splitted : splitted};
-        for (var i = 0; i < 60; i++) {
+        for (var i = 0; i < 78; i++) {
             var pair = ratings.splitted[i].split(':');
             ratings[pair[0]] = pair[1]
         }
