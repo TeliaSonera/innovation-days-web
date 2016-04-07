@@ -93,7 +93,7 @@ $('#canvasideas').sheetrock({
 $('#ideas').sheetrock({
     url: mySpreadsheet2,
     query: "select B,D,E,F",
-    fetchSize: 30,
+    fetchSize: 40,
     rowTemplate: HRTemplate2,
     callback: function (a, b, c) {
         loadComplete++;

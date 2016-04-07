@@ -51,6 +51,7 @@ function whenComplete() {
             }
         });
     $('#b10').parent().remove();
+    $('#b24').parent().remove();
     ul = $('#ideas'); // your parent ul element
     ul.children().each(function(i,div){ul.prepend(div)});
     $('#ideas').show();
@@ -92,7 +93,7 @@ $('#canvasideas').sheetrock({
 $('#ideas').sheetrock({
     url: mySpreadsheet2,
     query: "select B,D,E,F",
-    fetchSize: 30,
+    fetchSize: 40,
     rowTemplate: HRTemplate2,
     callback: function (a, b, c) {
         loadComplete++;
