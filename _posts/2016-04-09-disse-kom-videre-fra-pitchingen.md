@@ -17,6 +17,7 @@ Første del av Innovation Days er gjennomført. Av 18 ideer som ble pitchet var 
 - Åsmund Tharaldsen
 - Janita Tåset
 - Steffen Amundsen
+- Annicken Hogstad
 
 ### Problem
 Det er både dyrt og trist å ikke kunne dele ferieøyeblikk med sine nære og kjære, og ikke minst slå av en prat når behovet melder seg når man er turist i Norge og uten norsk simkort.
