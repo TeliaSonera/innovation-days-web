@@ -96,7 +96,7 @@ AT&T: https://www.youtube.com/watch?v=QNwjpT8lVi8
 
 - **Harald Simonsen**
 - Geir Bye
-- Kenny H
+- Kenny Hognestad
 
 ### Problem 
 Make life easier and more fun for people when connecting their things, myThings, to the internet. 
