@@ -67,7 +67,30 @@
           <div class="inner">
             <h1 id="watch-the-live-stream-here">Watch the live stream here</h1>
 
-<iframe src="http://video.netcom.no/v.ihtml/player.html?token=b8d5cbfe9bd01ae74f5e&amp;live%5fid=13267145&amp;source=embed" width="600" height="350" frameborder="0" border="0" scrolling="no" allowfullscreen="1" mozallowfullscreen="1" webkitallowfullscreen="1"></iframe>
+<div class="padder"> <div class="video-container"> <iframe src="http://video.netcom.no/v.ihtml/player.html?token=b8d5cbfe9bd01ae74f5e&amp;live%5fid=13267145&amp;source=embed" frameborder="0" border="0" scrolling="no" allowfullscreen="1" mozallowfullscreen="1" webkitallowfullscreen="1"></iframe> </div> </div>
+
+<style type="text/css">
+.video-container {
+	width: 100%;
+	height: 0;
+    padding-top: 20px;
+    position: relative;
+    width: 100%;
+    padding-bottom: 53%;
+    box-sizing: border-box;
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+
+</style>
+
       
           </div>
         </div>
