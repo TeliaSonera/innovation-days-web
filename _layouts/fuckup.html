@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>{{ page.title }} :: Innovation Days :: Telia Norge</title>
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <link rel="stylesheet" href="/stylesheets/hamburger.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script type="text/javascript" src="/javascripts/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/javascripts/hamburger.js"></script>
+    <script type="text/javascript" src="/javascripts/linkifyjs/linkify.min.js"></script>
+    <script type="text/javascript" src="/javascripts/linkifyjs/linkify-jquery.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    {{ page.headsection }}
+  </head>
+  <body>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-73178120-1', 'auto');
+  ga('send', 'pageview');
+
+      </script>
+      {% include fu-header.html %}
+      {{ content }}
+     
+      <script type="text/javascript" src="/javascripts/main.js"></script>
+      
+  </body>
+</html>
